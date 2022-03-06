@@ -1,8 +1,7 @@
 .app-header .logo {
     float: left;
-    width: 120px;
+    width: 150px;
     color: #fff;
-    text-transform: uppercase;
     font-weight: 700;
     font-size: 2rem;
 }

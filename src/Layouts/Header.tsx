@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <Header className="app-header">
-      <div className="logo">Logo</div>
+      <div className="logo">FX rate</div>
       <Menu theme="dark" mode="horizontal">
         {pages.map((page) => {
           return (

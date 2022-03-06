@@ -7,3 +7,5 @@ jest.mock("../Pages/pages", () => (): Page[] => [
 test("should display menu item", () => {});
 
 test("should direct to a path after click", () => {});
+
+test("should display a logo", () => {});
