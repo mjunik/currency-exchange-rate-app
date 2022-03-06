@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { Currency } from "../../Services/currencies";
-import ExchangeRatesSelect from "./ExchangeRatesSelect";
+import { Currency } from "../Services/currencies";
+import CurrencySelect from "./CurrencySelect";
 
-test("renders select", () => {
+test("renders currency select component", () => {
   render(
-    <ExchangeRatesSelect currency={Currency.AUD} currencyChanged={() => {}} />
+    <CurrencySelect currency={Currency.AUD} currencyChanged={() => {}} />
   );
   const titleElement = screen.getByText("Select currency");
   expect(titleElement).toBeInTheDocument();

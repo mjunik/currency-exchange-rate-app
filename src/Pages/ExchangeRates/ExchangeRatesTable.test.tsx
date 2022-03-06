@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { Currency } from "../../Services/currencies";
-import { ExchangeRatesResponse } from "../../Services/getExchangeRate";
+import { RatesResponse } from "../../Services/getRates";
 import ExchangeRatesTable from "./ExchangeRatesTable";
 
 jest.mock("antd", () => ({ Table: () => "Table" }));
 
-const mockedData: ExchangeRatesResponse = {
+const mockedData: RatesResponse = {
   success: true,
   timestamp: 123,
   base: Currency.EUR,
