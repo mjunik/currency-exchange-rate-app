@@ -7,6 +7,7 @@ import { RatesResponse } from "../../Services/getRates";
 import ExchangeRatesTable from "./ExchangeRatesTable";
 import CurrencySelect from "../../Components/CurrencySelect";
 import getExchangeRates from "../../Services/getExchangeRates";
+import ApiLimitMsg from "../../Components/ApiLimitMsg";
 
 function ExchangeRatesPage() {
   const [exchangeRates, setExchangeRates] = useState<RatesResponse>();
@@ -35,6 +36,8 @@ function ExchangeRatesPage() {
       <div>
         <CurrencySelect currencyChanged={getData} currency={defaultCurrency} />
       </div>
+
+      <ApiLimitMsg />
 
       {isLoading && <Spinner />}
 

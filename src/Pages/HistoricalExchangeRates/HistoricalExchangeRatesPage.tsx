@@ -1,5 +1,6 @@
 import Title from "antd/lib/typography/Title";
 import { useState } from "react";
+import ApiLimitMsg from "../../Components/ApiLimitMsg";
 import ErrorMsg from "../../Layouts/ErrorMsg";
 import Spinner from "../../Layouts/Spinner";
 import { Currency } from "../../Services/currencies";
@@ -41,6 +42,8 @@ function HistoricalExchangeRatesPage() {
       <Title>Historical Exchange Rates</Title>
 
       <HistoricalExchangeRatesSelect getHistoricalExchangeRates={getData} />
+
+      <ApiLimitMsg />
 
       {isLoading && <Spinner />}
 
