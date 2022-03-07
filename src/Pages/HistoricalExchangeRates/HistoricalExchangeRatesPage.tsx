@@ -7,6 +7,7 @@ import Spinner from "../../Layouts/Spinner";
 import { Currency } from "../../Services/currencies";
 import getHistoricalExchangeRates from "../../Services/getHistoricalExchangeRates";
 import { RatesResponse } from "../../Services/getRates";
+import HistoricalExchangeRatesCurrentRate from "./HistoricalExchangeRatesCurrentRate";
 
 import HistoricalExchangeRatesSelect from "./HistoricalExchangeRatesSelect";
 import HistoricalExchangeRatesTable from "./HistoricalExchangeRatesTable";
@@ -38,11 +39,6 @@ function HistoricalExchangeRatesPage() {
     );
   }
 
-  function getCurrentRate(): number {
-    const currentRates = historicalRates![0].rates;
-    return currentRates[Object.keys(currentRates)[0]];
-  }
-
   return (
     <>
       <Title>Historical Exchange Rates</Title>
@@ -55,12 +51,7 @@ function HistoricalExchangeRatesPage() {
 
       {!isLoading && historicalRates && (
         <>
-          <div style={{ margin: "25px 0" }}>
-            <Title level={5}>
-              Current exchange rate:
-              <span style={{ fontSize: "2rem" }}> {getCurrentRate()}</span>
-            </Title>
-          </div>
+          <HistoricalExchangeRatesCurrentRate currentRate={historicalRates[0]}/>
           <HistoricalExchangeRatesTable data={historicalRates.slice(1)} />
         </>
       )}
