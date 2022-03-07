@@ -1,8 +1,8 @@
 import { Currency } from "./currencies";
 import getRates, { RatesResponse } from "./getRates";
 
-function getExchangeRates(currency: Currency): Promise<RatesResponse | Error> {
-    return getRates('latest', currency);
+function getExchangeRates(baseCurrency: Currency, targetCurrencies: Currency[] = []): Promise<RatesResponse | Error> {
+    return getRates('latest', baseCurrency, targetCurrencies);
 }
 
 export default getExchangeRates;

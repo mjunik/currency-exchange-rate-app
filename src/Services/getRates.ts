@@ -12,13 +12,13 @@ export interface RatesResponse {
     rates: ExchangeRate;
 }
 
-function getRates(endpoint: string, baseCurrency: Currency, symbols: Currency[] = []): Promise<RatesResponse | Error> {
+function getRates(endpoint: string, baseCurrency: Currency, targetCurrencies: Currency[] = []): Promise<RatesResponse | Error> {
     return fetch(
         process.env.REACT_APP_REST_URI + '/'
         + endpoint
         + '?access_key=' + process.env.REACT_APP_REST_KEY
         + '&base=' + baseCurrency
-        + '&symbols=' + symbols.join())
+        + '&symbols=' + targetCurrencies.join())
         .then(res => res.ok ? res.json() : new Error('Something went wrong'))
 }
 
