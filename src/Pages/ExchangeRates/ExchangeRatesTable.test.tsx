@@ -3,7 +3,11 @@ import { Currency } from "../../Services/currencies";
 import { RatesResponse } from "../../Services/getRates";
 import ExchangeRatesTable from "./ExchangeRatesTable";
 
-jest.mock("antd", () => ({ Table: () => "Table" }));
+const mockTableComponent = jest.fn();
+jest.mock("antd/lib/table/Table", () => (props: any) => {
+  mockTableComponent(props);
+  return <div>Table</div>;
+});
 
 const mockedData: RatesResponse = {
   success: true,
@@ -19,4 +23,17 @@ test("renders table", () => {
   expect(tableElement).toBeInTheDocument();
 });
 
-test("renders date", () => {});
+test("renders date", () => {
+  render(<ExchangeRatesTable data={mockedData} />);
+  const dateElement = screen.getByTestId("date");
+  expect(dateElement.textContent).toEqual("2022-03-06");
+});
+
+test("prepares table data", () => {
+  render(<ExchangeRatesTable data={mockedData} />);
+  expect(mockTableComponent).toHaveBeenCalledWith(
+    expect.objectContaining({
+      dataSource: [{ currency: "AUD", exchangeRate: 1.23, key: "AUD" }],
+    })
+  );
+});

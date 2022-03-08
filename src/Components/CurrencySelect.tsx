@@ -23,9 +23,10 @@ function CurrencySelect({
         defaultValue={currency}
         style={{ width: 220 }}
         onChange={currencyChanged}
+        data-testid="currencySelect"
       >
         {currencies.map((currency) => (
-          <Option value={currency} key={currency}>
+          <Option value={currency} key={currency} data-testid="currencyOption">
             {currency}
           </Option>
         ))}

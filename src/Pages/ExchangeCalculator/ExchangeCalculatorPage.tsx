@@ -18,12 +18,6 @@ export interface ConvertCalculationData {
   targetCurrency: Currency;
 }
 
-interface ConvertAmount {
-  currency: Currency;
-  rate: number;
-  amount: number;
-}
-
 function ExchangeCalculatorPage() {
   const [exchangeRates, setExchangeRates] = useState<RatesResponse>();
   const [calculationData, setCalculationData] =

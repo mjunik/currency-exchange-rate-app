@@ -1,9 +1,7 @@
-import { Table } from "antd";
+import Table from "antd/lib/table/Table";
 import Paragraph from "antd/lib/typography/Paragraph";
 import { Currency } from "../../Services/currencies";
-import {
-  ExchangeRate, RatesResponse
-} from "../../Services/getRates";
+import { ExchangeRate, RatesResponse } from "../../Services/getRates";
 
 interface ExchangeRatesTableRow {
   currency: Currency;
@@ -16,7 +14,7 @@ function ExchangeRatesTable({ data }: { data: RatesResponse }) {
     { title: "Currency", dataIndex: "currency", key: "currency" },
     { title: "Exchange rate", dataIndex: "exchangeRate", key: "exchangeRate" },
   ];
-  
+
   const tabularData = prepareDataForTableView(data.rates);
 
   function prepareDataForTableView(
@@ -24,14 +22,18 @@ function ExchangeRatesTable({ data }: { data: RatesResponse }) {
   ): ExchangeRatesTableRow[] {
     return Object.keys(rates).map(
       (key) =>
-        ({ currency: key, exchangeRate: rates[key], key } as ExchangeRatesTableRow)
+        ({
+          currency: key,
+          exchangeRate: rates[key],
+          key,
+        } as ExchangeRatesTableRow)
     );
   }
 
   return (
     <>
-      <Paragraph style={{margin: '1.5rem 0'}}>
-        <strong>As of:</strong> {data.date}
+      <Paragraph style={{ margin: "1.5rem 0" }}>
+        <strong>As of:</strong> <span data-testid="date">{data.date}</span>
       </Paragraph>
 
       <Table

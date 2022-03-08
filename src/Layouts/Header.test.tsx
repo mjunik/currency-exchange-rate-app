@@ -1,8 +1,4 @@
-import { Page } from "../Pages/pages";
-
-jest.mock("../Pages/pages", () => (): Page[] => [
-  { title: "Page 1", path: "/page-1", component: () => <div></div> },
-]);
+import { render, screen } from "@testing-library/react";
 
 test("should display menu item", () => {});
 
