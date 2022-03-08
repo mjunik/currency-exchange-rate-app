@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-jest.mock("./Layouts/Header", () => () => <div>Header</div>);
+jest.mock("./layouts/Header", () => () => <div>Header</div>);
 
 test("renders header", () => {
   render(<App />);

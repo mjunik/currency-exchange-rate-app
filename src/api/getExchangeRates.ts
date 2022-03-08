@@ -1,5 +1,5 @@
 import { Currency } from "./currencies";
-import getRates, { RatesResponse } from "./getRates";
+import callExchangeRatesApi, { RatesResponse } from "./callExchangeRatesApi";
 
 function getExchangeRates(baseCurrency: Currency, targetCurrencies: Currency[] = []): Promise<RatesResponse | Error> {
     const params = {
@@ -7,7 +7,7 @@ function getExchangeRates(baseCurrency: Currency, targetCurrencies: Currency[] =
         symbols: targetCurrencies.toString()
     }
 
-    return getRates('latest', new URLSearchParams(params));
+    return callExchangeRatesApi('latest', new URLSearchParams(params));
 }
 
 export default getExchangeRates;

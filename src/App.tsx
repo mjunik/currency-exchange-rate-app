@@ -1,8 +1,8 @@
 import { Layout } from "antd";
-import Header from "./Layouts/Header";
+import Header from "./layouts/Header";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import pages from "./Pages/pages";
+import pages from "./pages/pages";
 import React from "react";
 
 function App() {

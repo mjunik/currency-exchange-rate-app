@@ -12,7 +12,7 @@ export interface RatesResponse {
     rates: ExchangeRate;
 }
 
-function getRates(endpoint: string, queryParams: URLSearchParams): Promise<RatesResponse | Error> {
+function callExchangeRatesApi(endpoint: string, queryParams: URLSearchParams): Promise<RatesResponse | Error> {
     return fetch(
         process.env.REACT_APP_REST_URI + '/'
         + endpoint
@@ -22,4 +22,4 @@ function getRates(endpoint: string, queryParams: URLSearchParams): Promise<Rates
         .then(res => res.ok ? res.json() : new Error('Something went wrong'))
 }
 
-export default getRates;
+export default callExchangeRatesApi;

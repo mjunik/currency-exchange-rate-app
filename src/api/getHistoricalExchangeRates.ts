@@ -1,6 +1,6 @@
 import { Currency } from "./currencies";
 import getExchangeRates from "./getExchangeRates";
-import getRates, { RatesResponse } from "./getRates";
+import callExchangeRatesApi, { RatesResponse } from "./callExchangeRatesApi";
 
 /**
  * Generates a list of dates in YYYY-MM-DD format from 1 year back to the given number of years back
@@ -31,7 +31,7 @@ function getHistoricalExchangeRates(baseCurrency: Currency, targetCurrencies: Cu
                 base: baseCurrency,
                 symbols: targetCurrencies.toString()
             }
-            return getRates(date, new URLSearchParams(params))
+            return callExchangeRatesApi(date, new URLSearchParams(params))
         })]
     )
 }
