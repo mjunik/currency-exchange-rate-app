@@ -8,7 +8,7 @@ interface HistoricalRatesSelectProps {
 }
 
 function HistoricalExchangeRatesSelect({
-  getHistoricalExchangeRates: getHistoricalExchangeRates,
+  getHistoricalExchangeRates,
 }: HistoricalRatesSelectProps) {
   const [baseCurrency, setBaseCurrency] = useState<Currency>();
   const [secondCurrency, setSecondCurrency] = useState<Currency>();
@@ -20,17 +20,11 @@ function HistoricalExchangeRatesSelect({
   return (
     <div style={{ display: "flex", alignItems: "flex-end", gap: 30 }}>
       <div>
-        <CurrencySelect
-          currencyChanged={setBaseCurrency}
-          title="From"
-        />
+        <CurrencySelect currencyChanged={setBaseCurrency} title="From" />
       </div>
 
       <div>
-        <CurrencySelect
-          currencyChanged={setSecondCurrency}
-          title="To"
-        />
+        <CurrencySelect currencyChanged={setSecondCurrency} title="To" />
       </div>
 
       <Button

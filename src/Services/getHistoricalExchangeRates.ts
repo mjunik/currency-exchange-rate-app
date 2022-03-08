@@ -26,7 +26,13 @@ function getHistoricalExchangeRates(baseCurrency: Currency, targetCurrencies: Cu
 
     return Promise.all([
         getExchangeRates(baseCurrency, targetCurrencies),
-        ...historicalDates.map(date => getRates(date, baseCurrency, targetCurrencies))]
+        ...historicalDates.map(date => {
+            const params = {
+                base: baseCurrency,
+                symbols: targetCurrencies.toString()
+            }
+            return getRates(date, new URLSearchParams(params))
+        })]
     )
 }
 
