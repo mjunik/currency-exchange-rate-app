@@ -1,9 +1,0 @@
-.results-wrapper {
-    display: flex;
-    gap: 50px;
-}
-
-.result {
-    display: block;
-    font-size: 2rem;
-}
