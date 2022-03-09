@@ -38,17 +38,17 @@ function ExchangeCalculatorPage() {
   async function getExchangeRatesForConvert(baseCurrency: Currency) {
     setIsLoading(true);
 
-    await getExchangeRates(baseCurrency, currencies).then((data) => {
-      if (data instanceof Error) {
-        setExchangeRates(undefined);
-        setShowError(true);
-      } else {
-        setExchangeRates(data);
-        setShowError(false);
-      }
+    const data = await getExchangeRates(baseCurrency, currencies);
+    
+    if (data instanceof Error) {
+      setExchangeRates(undefined);
+      setShowError(true);
+    } else {
+      setExchangeRates(data);
+      setShowError(false);
+    }
 
-      setIsLoading(false);
-    });
+    setIsLoading(false);
   }
 
   function getRatesForTable(): ExchangeRatesTableRate[] {

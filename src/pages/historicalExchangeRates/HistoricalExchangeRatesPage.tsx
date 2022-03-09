@@ -20,23 +20,23 @@ function HistoricalExchangeRatesPage() {
   async function getData(baseCurrency: Currency, secondCurrency: Currency) {
     setIsLoading(true);
 
-    await getHistoricalExchangeRates(baseCurrency, [secondCurrency]).then(
-      (data) => {
-        const successfulData = data.filter(
-          (response): response is RatesResponse => !(response instanceof Error)
-        );
+    const data = await getHistoricalExchangeRates(baseCurrency, [
+      secondCurrency,
+    ]);
 
-        if (successfulData.length) {
-          setHistoricalRates(successfulData);
-          setShowError(false);
-        } else {
-          setHistoricalRates(undefined);
-          setShowError(true);
-        }
-
-        setIsLoading(false);
-      }
+    const successfulData = data.filter(
+      (response): response is RatesResponse => !(response instanceof Error)
     );
+
+    if (successfulData.length) {
+      setHistoricalRates(successfulData);
+      setShowError(false);
+    } else {
+      setHistoricalRates(undefined);
+      setShowError(true);
+    }
+
+    setIsLoading(false);
   }
 
   return (
@@ -51,7 +51,9 @@ function HistoricalExchangeRatesPage() {
 
       {!isLoading && historicalRates && (
         <>
-          <HistoricalExchangeRatesCurrentRate currentRate={historicalRates[0]}/>
+          <HistoricalExchangeRatesCurrentRate
+            currentRate={historicalRates[0]}
+          />
           <HistoricalExchangeRatesTable data={historicalRates.slice(1)} />
         </>
       )}

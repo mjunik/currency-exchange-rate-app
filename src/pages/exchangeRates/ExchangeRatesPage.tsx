@@ -21,12 +21,10 @@ function ExchangeRatesPage() {
   async function getData(currency: Currency) {
     setIsLoading(true);
 
-    await getExchangeRates(currency).then((data) => {
-      data instanceof Error
-        ? setExchangeRates(undefined)
-        : setExchangeRates(data);
-      setIsLoading(false);
-    });
+    const data = await getExchangeRates(currency);
+    
+    setExchangeRates(data instanceof Error ? undefined : data);
+    setIsLoading(false);
   }
 
   return (
